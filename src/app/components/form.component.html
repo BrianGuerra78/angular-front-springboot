@@ -1,0 +1,38 @@
+<h2>Form {{product.id ? 'Update' : 'Create'}} Product</h2>
+
+<form (ngSubmit)="onSubmit(productForm)" #productForm="ngForm">
+    <div>
+        <input class="form-control my-2" placeholder="Name" name="name" #name="ngModel" required minlength="4" [(ngModel)]="product.name">
+        <ng-container *ngIf="name.invalid && (name.dirty || name.touched)">
+            <div class="text-danger">
+                <div *ngIf="name.errors?.['required']">Nombre es requerido!</div>
+                <div *ngIf="name.errors?.['minlength']">Nombre debe tener al menos 4 caracteres!</div>
+            </div>
+        </ng-container>
+    </div>
+
+    <div>
+        <input class="form-control my-2" placeholder="Description" name="description" #description="ngModel" required [(ngModel)]="product.description">
+        <ng-container *ngIf="description.invalid && (description.dirty || description.touched)">
+            <div class="text-danger">
+                <div *ngIf="description.errors?.['required']">Descripción es requerida!</div>
+            </div>
+        </ng-container>
+    </div>
+
+    <div>
+        <input class="form-control my-2" type="number" placeholder="Price" name="price" #price="ngModel" required min="10" [(ngModel)]="product.price">
+        <ng-container *ngIf="price.invalid && (price.dirty || price.touched)">
+            <div class="text-danger">
+                <div *ngIf="price.errors?.['required']">Precio es requerido!</div>
+                <div *ngIf="price.errors?.['min']">Precio debe ser al menos 10!</div>
+            </div>
+        </ng-container>
+    </div>
+
+    <div>
+        <button class="btn btn-success my-2" type="submit" [disabled]="productForm.form.invalid">
+      {{product.id ? 'Update' : 'Create'}}
+    </button>
+    </div>
+</form>
