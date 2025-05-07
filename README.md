@@ -1,3 +1,6 @@
+repositorio del backend https://github.com/BrianGuerra78/springboot-backend-react, solo se cambia la ruta del localhost de angular en la coneccion del backend
+
+
 # AngularProducts
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
